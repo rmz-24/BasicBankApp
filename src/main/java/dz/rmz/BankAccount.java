@@ -7,8 +7,8 @@ public class BankAccount {
         EPARGNE
     }
 
-    private static final String bankName = "AL-BARAKA";
-    private static final String agencyCode = "AGENCE-CODE-107";
+    private static final String BANK_NAME = "AL-BARAKA";
+    private static final String AGENCY_CODE = "AGENCE-CODE-107";
     private final Client client;
     private final int accountNbr;
     private final AccountType accountType;
@@ -24,11 +24,11 @@ public class BankAccount {
     }
 
     public String getBankName(){
-        return bankName;
+        return BANK_NAME;
     }
 
     public String getAgencyCode(){
-        return agencyCode;
+        return AGENCY_CODE;
     }
 
     public Client getClient(){
@@ -63,7 +63,7 @@ public class BankAccount {
     public String toString() {
         return String.format("Bank Name: %s || Agency Code: %s \n" +
                 "Client: %s\n" +
-                " Account Number: %d || Account Type: %s || Balance: %f || Limit: %f\n", bankName, agencyCode, client.toString(), accountNbr, accountType.toString(), balance, limit);
+                " Account Number: %d || Account Type: %s || Balance: %f || Limit: %f\n", BANK_NAME, AGENCY_CODE, client.toString(), accountNbr, accountType.toString(), balance, limit);
     }
 
     public static class Builder{

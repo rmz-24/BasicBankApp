@@ -4,18 +4,15 @@ import java.util.ArrayList;
 
 public class Accounts {
 
-    private final ArrayList<BankAccount> accounts;
+    private final ArrayList<BankAccount> accounts = new ArrayList<>();
     private static Accounts instance;
 
-    public Accounts(){
-        accounts = new ArrayList<>();
+    private Accounts(){
+        instance = this;
     }
 
-    public static synchronized Accounts getInstance(){
-        if(instance == null){
-            instance = new Accounts();
-        }
-        return instance;
+    public static Accounts getInstance() {
+        return instance == null ? new Accounts() : instance;
     }
 
     public void add(BankAccount acc) {
