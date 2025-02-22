@@ -4,9 +4,10 @@ import java.util.ArrayList;
 
 public class Accounts {
 
+    private final ArrayList<BankAccount> accounts;
     private static Accounts instance;
 
-    private Accounts(){
+    public Accounts(){
         accounts = new ArrayList<>();
     }
 
@@ -16,8 +17,6 @@ public class Accounts {
         }
         return instance;
     }
-
-    private ArrayList<BankAccount> accounts;
 
     public void add(BankAccount acc) {
         accounts.add(acc);

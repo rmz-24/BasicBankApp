@@ -8,12 +8,20 @@ public class BankAccount {
     }
 
     private static final String bankName = "AL-BARAKA";
-    private final String agencyCode = "AGENCE-CODE-107";
+    private static final String agencyCode = "AGENCE-CODE-107";
     private final Client client;
     private final int accountNbr;
-    private final AccountType account_type;
+    private final AccountType accountType;
     private double balance = 0;
     private double limit;
+
+    private BankAccount(Builder builder){
+        this.client = builder.client;
+        this.accountNbr = builder.accountNbr;
+        this.accountType = builder.accountType;
+        this.balance = builder.balance;
+        this.limit = builder.limit;
+    }
 
     public String getBankName(){
         return bankName;
@@ -31,8 +39,8 @@ public class BankAccount {
         return accountNbr;
     }
 
-    public AccountType getAccount_type(){
-        return account_type;
+    public AccountType getAccountType(){
+        return accountType;
     }
 
     public double getBalance(){
@@ -55,15 +63,7 @@ public class BankAccount {
     public String toString() {
         return String.format("Bank Name: %s || Agency Code: %s \n" +
                 "Client: %s\n" +
-                " Account Number: %d || Account Type: %s || Balance: %f || Limit: %f\n", bankName, agencyCode, client.toString(), accountNbr, account_type.toString(), balance, limit);
-    }
-
-    private BankAccount(Builder builder){
-        this.client = builder.client;
-        this.accountNbr = builder.accountNbr;
-        this.account_type = builder.account_type;
-        this.balance = builder.balance;
-        this.limit = builder.limit;
+                " Account Number: %d || Account Type: %s || Balance: %f || Limit: %f\n", bankName, agencyCode, client.toString(), accountNbr, accountType.toString(), balance, limit);
     }
 
     public static class Builder{
@@ -72,7 +72,7 @@ public class BankAccount {
 
         private Client client;
         private int accountNbr;
-        private AccountType account_type;
+        private AccountType accountType;
         private double balance;
         private double limit;
 
@@ -87,7 +87,7 @@ public class BankAccount {
         }
 
         public Builder setAccountType(AccountType account_type){
-            this.account_type = account_type;
+            this.accountType = account_type;
             return this;
         }
 
@@ -102,7 +102,7 @@ public class BankAccount {
         }
 
         public BankAccount build() {
-            if (client == null || accountNbr <= 0 || account_type == null) {
+            if (client == null || accountNbr <= 0 || accountType == null) {
                 throw new IllegalArgumentException("Invalid arguments for BankAccount");
             }
             BankAccount account = new BankAccount(this);

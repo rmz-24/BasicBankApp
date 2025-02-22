@@ -11,45 +11,44 @@ public class BankOperations {
         }
     }
 
-    public static void withdraw(BankAccount b, double amount) {
+    public static void withdraw(BankAccount acc, double amount){
         if(amount <= 0){
             System.out.println("Useless transaction/Cannot withdraw negative amount from balance");
-        } else{
-            if(b.getBalance() <= 0 || b.getBalance() < amount){
-                System.out.println("Insufficient funds, please refill your balance.");
-            }
-            if(b.getBalance() >= amount){
-                if(b.getBalance() <= b.getLimit()){
-                    System.out.println("Cannot withdraw, limit reached !");
-                } else{
-                    b.setBalance(b.getBalance() - amount);
-                    System.out.println("Withdraw successful. New balance: " + b.getBalance());
-                    if(b.getBalance() <= b.getLimit()){
-                        System.out.println("Attention, limit reached !");
-                    }
-                }
-            }
+            return;
+        }
+        if(acc.getBalance() <= 0 || acc.getBalance() < amount){
+            System.out.println("Insufficient funds, please refill your balance.");
+            return;
+        }
+        if(acc.getBalance() <= acc.getLimit()){
+            System.out.println("Cannot withdraw, limit reached !");
+            return;
+        }
+        acc.setBalance(acc.getBalance() - amount);
+        System.out.println("Withdraw successful. New balance: " + acc.getBalance());
+        if(acc.getBalance() <= acc.getLimit()){
+            System.out.println("Attention, limit reached !");
         }
     }
 
-    public static void transfer(BankAccount from, BankAccount to, double amount) {
-        if(amount > 0){
-            if(from.getBalance() >= amount){
-                if(from.getBalance() > from.getLimit()){
-                    from.setBalance(from.getBalance() - amount);
-                    to.setBalance(to.getBalance() + amount);
-                    System.out.println("Transfer successful. New balance: " + from.getBalance());
-                    if(from.getBalance() <= from.getLimit()){
-                        System.out.println("Attention, limit reached !");
-                    }
-                } else{
-                    System.out.println("Cannot transfer, limit reached !");
-                }
-            } else{
-                System.out.println("Insufficient funds");
-            }
-        } else{
+    public static void transfer(BankAccount giverAccount, BankAccount receiverAccount, double amount){
+        if(amount <= 0){
             System.out.println("Useless transaction/Cannot transfer negative amount from balance");
+            return;
+        }
+        if(giverAccount.getBalance() < amount){
+            System.out.println("Insufficient funds, please refill your balance.");
+            return;
+        }
+        if(giverAccount.getBalance() <= giverAccount.getLimit()){
+            System.out.println("Cannot transfer, limit reached !");
+            return;
+        }
+        giverAccount.setBalance(giverAccount.getBalance() - amount);
+        receiverAccount.setBalance(receiverAccount.getBalance() + amount);
+        System.out.println("Transfer successful. New balance: " + giverAccount.getBalance());
+        if(giverAccount.getBalance() <= giverAccount.getLimit()){
+            System.out.println("Attention, limit reached !");
         }
     }
 

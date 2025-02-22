@@ -6,6 +6,12 @@ public class Client {
     private final String surname;
     private String address;
 
+    public Client(String name, String surname, String address) {
+        this.name = name;
+        this.surname = surname;
+        this.address = address;
+    }
+
     public String getName(){
         return name;
     }
@@ -25,11 +31,5 @@ public class Client {
     @Override
     public String toString(){
         return String.format("Name: %s || Surname: %s || Address: %s", name, surname, address);
-    }
-
-    public Client(String name, String surname, String address) {
-        this.name = name;
-        this.surname = surname;
-        this.address = address;
     }
 }
