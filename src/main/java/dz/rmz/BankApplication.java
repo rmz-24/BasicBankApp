@@ -25,7 +25,7 @@ public class BankApplication {
         System.out.println("-------------------------SEPARATOR 1-------------------------");
 
         Accounts accounts = Accounts.getInstance();
-        /*withdraw(firstAccount, 90); //10
+        withdraw(firstAccount, 90); //10
         withdraw(firstAccount, 1); //10
         deposit(firstAccount, 1); //11
         withdraw(firstAccount, 1); //10
@@ -45,6 +45,6 @@ public class BankApplication {
         closeAccount(firstAccount);
         System.out.println(accounts.getAccounts());
         closeAccount(secondAccount);
-        System.out.println(accounts.getAccounts());*/
+        System.out.println(accounts.getAccounts());
     }
 }
